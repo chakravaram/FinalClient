@@ -18,7 +18,7 @@ public class ValiedUser {
 	private int profile_id;
 	
 	
-	//change
+	//change2
 	
 	public int getFlag() {
 		return flag;
