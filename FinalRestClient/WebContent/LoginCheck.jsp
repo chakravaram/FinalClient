@@ -54,9 +54,10 @@
  
  if(m.getFlag()==0)
 	 response.sendRedirect("LoginFail.jsp");
+ else{
  System.out.println("login in success"+m.getProfile_id());
  session.setAttribute("pid", m.getProfile_id());
- response.sendRedirect("home.jsp");
+ response.sendRedirect("home.jsp");}
  
  }
  catch(Exception e)
