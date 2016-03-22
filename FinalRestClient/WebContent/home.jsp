@@ -33,7 +33,7 @@ ClientResponse res = webResource.accept("application/xml")
 
 if (res.getStatus() != 200) {
    throw new RuntimeException("Failed : HTTP error code : "
-	+ response.getStatus());
+	+ res.getStatus());
 }
 
 try{
@@ -51,9 +51,23 @@ Profiles m= (Profiles) um.unmarshal(new StringReader(output));
 System.out.println("vijay1");
 System.out.println("Output from Serverrr .... \n");
 System.out.println(m.getFirstname());
+session.setAttribute("Profile", m);
+Profiles c=(Profiles)session.getAttribute("Profile");
+System.out.println("Output from Serverrter saving the object");
+
+
+
+
 
 %>
-<h2>Welcomffffffffffffffe <%=m.getFirstname() %>   Lastname:<%=m.getLastname() %></h2> 
+<h2 align=center> Welcome <%=c.getFirstname()+" "+c.getLastname() %> </h2>
+<input type="button" value="ViewAllPosts" action="ViewAllPosts.jsp"> 
+<form action="ViewAllMessages.jsp" method="post">
+ <input type="submit" value="ViewAllMessages">
+</form>
+
+<input type="button" value="SendMessage" onclick="SendMessage.jsp"> 
+
 <br/>
             <br/>
             <br/><br/><br/><br/><br/>
