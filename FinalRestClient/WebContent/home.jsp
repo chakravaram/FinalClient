@@ -61,12 +61,31 @@ System.out.println("Output from Serverrter saving the object");
 
 %>
 <h2 align=center> Welcome <%=c.getFirstname()+" "+c.getLastname() %> </h2>
-<input type="button" value="ViewAllPosts" action="ViewAllPosts.jsp"> 
+
+
+<form action="AddPost.jsp" method="post">
+ <input type="submit" value="AddPost">
+</form>
+
+
+<form action="ViewAllPosts.jsp" method="post">
+ <input type="submit" value="ViewAllPosts">
+</form>
+
 <form action="ViewAllMessages.jsp" method="post">
  <input type="submit" value="ViewAllMessages">
 </form>
+<form action="SendMessage.jsp" method="post">
+ <input type="submit" value="SendMessage">
+</form>
+<form action="CreateProfileForm.jsp" method="post">
+ <input type="submit" value="CreateProfile">
+</form>
 
-<input type="button" value="SendMessage" onclick="SendMessage.jsp"> 
+<form action="DeleteProfile.jsp" method="post">
+ <input type="submit" value="DeleteProfile">
+</form>
+
 
 <br/>
             <br/>

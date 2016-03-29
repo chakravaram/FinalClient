@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <%@page import= "java.io.StringReader,
 ksu.chakravaram.client.modelclasses.Profiles,
                  
@@ -16,18 +17,17 @@ ksu.chakravaram.client.modelclasses.Profiles,
 
 String s=request.getParameter("id");
 int id=Integer.parseInt(s.trim());
-DAO a=new DAO();
-Profiles p=a.viewProfile(id);
+DAO dao=new DAO();
+int i=dao.deleteProfile(id);
+
+if(i==1)
+	 response.sendRedirect("ProfileDeleteSuccess.jsp");
+else
+	 response.sendRedirect("ProfileDeleteFail.jsp");
+
+
 
 %>
-<h2 align="center"> Profile Details of <%=p.getFirstname().toUpperCase() %> </h2></br></br>
-User Name: <%=p.getUsername().toUpperCase() %></br>
-First Name: <%=p.getFirstname().toUpperCase() %></br>
-Last Name: <%=p.getLastname().toUpperCase() %></br>
-Contact Number: <%=p.getPhno()%></br>
-Profile Id: <%=p.getProfile_id() %></br>
-Date of Birth: <%=p.getDob() %></br></br>
-
 
 </body>
 </html>

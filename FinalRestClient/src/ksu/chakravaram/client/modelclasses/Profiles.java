@@ -33,54 +33,39 @@ public class Profiles {
 		private String username;
 	@XmlElement
 		private String password;
+	public int getProfile_id() {
+		return profile_id;
+	}
+	
+	public String getFirstname() {
+		return firstname;
+	}
+	
+	public String getLastname() {
+		return lastname;
+	}
+	
+	public int getPhno() {
+		return phno;
+	}
+	
+	public Date getDob() {
+		return dob;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
 		
 		
 		
 		
 
-		public String getUsername() {
-			return username;
-		}
-
-		
-
-		public String getPassword() {
-			return password;
-		}
-
-		
-		
-
-		public int getProfile_id() {
-			return profile_id;
-		}
-
-		
-
-		public String getFirstname() {
-			return firstname;
-		}
-
-		
-
-		public String getLastname() {
-			return lastname;
-		}
-
-		
-
-		public int getPhno() {
-			return phno;
-		}
-
-		
-
-		public Date getDob() {
-			return dob;
-		}
-
-		
-		
 		
 	}
 
