@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+
 </head>
 <body>
 <h2 align="center"> Here are all the Posts </h2></br></br>
@@ -22,12 +23,14 @@ ksu.chakravaram.client.modelclasses.Profiles,
 <%
 DAO dao=new DAO();
 ListPosts p=dao.viewPosts();
+String s=session.getAttribute("pid").toString();
+int pid=Integer.parseInt(s);
 
 for(Post pst :p.getPosts())
 {
 	Profiles pf= dao.viewProfile(pst.getProfile_id());
 	int mid=pf.getProfile_id();
-    
+	int post_id=pst.getPost_id();
     
     %>
    
@@ -36,12 +39,42 @@ for(Post pst :p.getPosts())
                 <h1>
                 Time: <%=pst.getTime() %>
         <a href="ViewProfile.jsp?id=<%=mid%>"> click</a>
-        
+        <form action="seelikes.jsp?id=<%=post_id%>" method="post">
+          <button  type="submit" >SeeLikes</button>
+          </form>
+          <form action="comment.jsp?id=<%=post_id%>" method="post">
+          <button  type="submit" >Comment</button>
+          </form>
+          <form action="seecomments.jsp?id=<%=post_id%>" method="post">
+          <button  type="submit" >SeeComments</button>
+          </form>
+       
+       <%     
+      
+       
+            
+       int a=dao.isLiked(pid,post_id);
+       if(a==0)
+       {
+       
+       
+       %>
+          <form action="Like.jsp?id=<%=post_id%>" method="post">
+          <button  type="submit" >Like</button>
+          </form>
+          <%
+       }
+          else {
+        	  
+          
+        	           %>
+        	           <button  >Liked</button>
+      
         
     
-    <%
+    <%   }
 }
-
+  
 %>
 
 </body>

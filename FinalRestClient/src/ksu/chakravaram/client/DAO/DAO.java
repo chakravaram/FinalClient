@@ -10,6 +10,7 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
 import ksu.chakravaram.client.modelclasses.IntegerValue;
+import ksu.chakravaram.client.modelclasses.ListLikes;
 import ksu.chakravaram.client.modelclasses.ListPosts;
 import ksu.chakravaram.client.modelclasses.ListProfiles;
 import ksu.chakravaram.client.modelclasses.Profiles;
@@ -184,4 +185,137 @@ public int deleteProfile(int id)
 	return m;
 
 }
+
+
+public int isLiked(int pfid,int pid)
+
+{
+  int m=0;
+	Client client = Client.create();
+	  
+	  
+	WebResource webResource = client
+	   .resource("http://localhost:8081/WebServices_Final1/backend/profiles/isliked/"+pfid+"/"+pid);
+	System.out.println("exception in client deleting++++1");
+
+	ClientResponse res = webResource.accept("application/xml")
+	           .get(ClientResponse.class);
+
+	if (res.getStatus() != 200) {
+	   throw new RuntimeException("Failed : HTTP error code : "
+		+ res.getStatus());
+	}
+
+	try{
+		String output = res.getEntity(String.class);
+		
+		  
+	JAXBContext context= JAXBContext.newInstance(IntegerValue.class);
+	
+
+	Unmarshaller um=context.createUnmarshaller();
+
+
+       IntegerValue iv= (IntegerValue) um.unmarshal(new StringReader(output));
+       m=iv.getI();
+      
+
+	}
+	catch(Exception e)
+	{
+		System.out.println("exception in is liked()"+e);
+	}
+	
+	return m;
+
+}
+
+
+
+public int Like(int pfid,int pid)
+
+{
+  int m=0;
+	Client client = Client.create();
+	  
+	  
+	WebResource webResource = client
+	   .resource("http://localhost:8081/WebServices_Final1/backend/profiles/like/"+pfid+"/"+pid);
+	System.out.println("exception in client deleting++++1");
+
+	ClientResponse res = webResource.accept("application/xml")
+	           .get(ClientResponse.class);
+
+	if (res.getStatus() != 200) {
+	   throw new RuntimeException("Failed : HTTP error code : "
+		+ res.getStatus());
+	}
+
+	try{
+		String output = res.getEntity(String.class);
+		
+		  
+	JAXBContext context= JAXBContext.newInstance(IntegerValue.class);
+	
+
+	Unmarshaller um=context.createUnmarshaller();
+
+
+       IntegerValue iv= (IntegerValue) um.unmarshal(new StringReader(output));
+       m=iv.getI();
+      
+
+	}
+	catch(Exception e)
+	{
+		System.out.println("exception in is liked()"+e);
+	}
+	
+	return m;
+
+}
+
+
+public ListLikes getAllLikes(int post_id)
+
+{
+	ListLikes m=null;
+	Client client = Client.create();
+	  
+	  
+	WebResource webResource = client
+	   .resource("http://localhost:8081/WebServices_Final1/backend/profiles/getlikes/"+post_id);
+
+	ClientResponse res = webResource.accept("application/xml")
+	           .get(ClientResponse.class);
+
+	if (res.getStatus() != 200) {
+	   throw new RuntimeException("Failed : HTTP error code : "
+		+ res.getStatus());
+	}
+
+	try{
+		String output = res.getEntity(String.class);
+		
+		  
+	JAXBContext context= JAXBContext.newInstance(ListLikes.class);
+	
+
+	Unmarshaller um=context.createUnmarshaller();
+
+
+ m= (ListLikes) um.unmarshal(new StringReader(output));
+
+
+	}
+	catch(Exception e)
+	{
+		System.out.println("exception"+e);
+	}
+	
+	return m;
+
+}
+
+
 }

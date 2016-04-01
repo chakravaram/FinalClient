@@ -7,13 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-AddPost:
-<form action="AddPost2.jsp" method="post"> <br/>
-<textarea rows="4" cols="50" name=pmsg>
+
+<%
+
+String s=request.getParameter("id");
+int to_id=Integer.parseInt(s.trim());
+%>
+
+<form action="SendMessage3.jsp?id=<%=to_id%>"" method="post"> <br/>
+<textarea rows="4" cols="50" name="msg">
 
 </textarea><br/><br/>
 <input type="submit" value="Post"> 
 </form>
+
+
+
 
 </body>
 </html>

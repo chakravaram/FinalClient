@@ -7,13 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-AddPost:
-<form action="AddPost2.jsp" method="post"> <br/>
-<textarea rows="4" cols="50" name=pmsg>
-
-</textarea><br/><br/>
-<input type="submit" value="Post"> 
-</form>
-
+success
 </body>
 </html>
